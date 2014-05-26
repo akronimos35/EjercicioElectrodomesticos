@@ -12,9 +12,22 @@ namespace electrodomesticos_JaviPlus
 {
     public partial class factura : Form
     {
-        public factura()
+
+        private void facturaBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+            this.Validate();
+            this.facturaBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.database3DataSet);
+
+        }
+
+        private void factura_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'database3DataSet.Producto' Puede moverla o quitarla según sea necesario.
+            this.productoTableAdapter.Fill(this.database3DataSet.Producto);
+            // TODO: esta línea de código carga datos en la tabla 'database3DataSet.Factura' Puede moverla o quitarla según sea necesario.
+            this.facturaTableAdapter.Fill(this.database3DataSet.Factura);
+
         }
     }
 }
